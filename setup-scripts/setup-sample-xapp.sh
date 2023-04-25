@@ -67,5 +67,13 @@ fi
 
 docker exec ${CONTAINER_NAME} sed -i "s/^export XAPP_ID.*/export XAPP_ID=${XAPP_ID}/g" /home/xapp-sm-connector/build_xapp.sh
 docker exec ${CONTAINER_NAME} /home/xapp-sm-connector/build_xapp.sh clean
+docker exec ${CONTAINER_NAME} apt-get update
+docker exec ${CONTAINER_NAME} apt-get install -y curl wget gnupg ca-certificates
+docker exec ${CONTAINER_NAME} curl -fsSL https://code-server.dev/install.sh | sh
+docker exec ${CONTAINER_NAME} curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /etc/apt/trusted.gpg.d/microsoft.gpg
+docker exec ${CONTAINER_NAME} echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list
+docker exec ${CONTAINER_NAME} apt-get update
+docker exec ${CONTAINER_NAME} apt-get install -y code
+docker exec ${CONTAINER_NAME} code-server --bind-addr=0.0.0.0:8080 --auth=none --disable-telemetry
 docker container restart ${CONTAINER_NAME}
 

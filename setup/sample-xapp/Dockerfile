@@ -117,6 +117,14 @@ RUN apt-get update  \
   && make install \
   && ldconfig \
   && sysctl -w net.ipv6.conf.lo.disable_ipv6=1 \
+# build IDE
+  #&& apt update \
+  && apt-get -y install net-tools curl gnupg  ca-certificates \
+  && curl -fsSL https://code-server.dev/install.sh | sh \
+  && curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /etc/apt/trusted.gpg.d/microsoft.gpg \
+  && echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list \
+  && apt-get update \
+  && apt-get install -y code \
 ###-----------------------------------
 ## DRL Agent
 ##------------------------------------
