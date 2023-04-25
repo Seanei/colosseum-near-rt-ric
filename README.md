@@ -1,16 +1,5 @@
 # Colosseum Near-Real-Time RIC
 
-This is a part of the [OpenRAN Gym](https://openrangym.com) project. It is minimal version of the O-RAN Software Community near-real-time RIC (Bronze release) adapted and extended to work on the [Colosseum](https://www.colosseum.net/) wireless network emulator.
-The scripts in this repository will start a minimal near-real-time RIC in the form of Docker containers (namely, `db`, `e2mgr`, `e2rtmansim`, `e2term`).
-The repository also features a sample xApp, which connects to the [SCOPE](https://github.com/wineslab/colosseum-scope) RAN environment through the following [E2 termination](https://github.com/wineslab/colosseum-scope-e2).
-
-If you use this software, please reference the following paper: 
-
-> M. Polese, L. Bonati, S. D'Oro, S. Basagni, T. Melodia, "ColoRAN: Design and Testing of Open RAN Intelligence on Large-scale Experimental Platforms," arXiv 2112.09559 [cs.NI], December 2021. [bibtex](https://ece.northeastern.edu/wineslab/wines_bibtex/polese2021coloran.txt) [pdf](https://arxiv.org/pdf/2112.09559.pdf)
-
-This work was partially supported by the U.S. National Science Foundation under Grants CNS-1923789 and NSF CNS-1925601, and the U.S. Office of Naval Research under Grant N00014-20-1-2132.
-
-## Structure
 
 This repository is organized as follows
 
@@ -59,7 +48,7 @@ The `setup-scripts` directory contains scripts to initialize the near-real-time 
 - `setup-lib.sh`: contains the IP addresses and ports used by the Docker containers of this repository. This script has been adapted from [here](https://gitlab.flux.utah.edu/johnsond/ric-profile/-/blob/master/setup-lib.sh)
 - `setup-ric.sh`: script to build, configure, and start the near-real-time RIC containers of this repository (namely, `db`, `e2mgr`, `e2rtmansim`, `e2term`). The network interface the RIC listens to for connections (e.g., the `col0` interface in Colosseum) is passed as argument. This script has been adapted from [here](https://gitlab.flux.utah.edu/johnsond/ric-profile/-/blob/master/setup-ric.sh)
 - `start-ric-arena.sh`: script to start the near-real-time RIC on external testbeds, e.g., on the [Arena platform](https://ece.northeastern.edu/wineslab/arena.php)
-- `setup-sample-xapp.sh`: script to setup a sample xApp Docker container. This xApp is capable of connecting to the [SCOPE](https://github.com/wineslab/colosseum-scope) RAN environment through the following [E2 termination](https://github.com/wineslab/colosseum-scope-e2). Custom or standard-compliant service models can be implemented on top of the RAN E2 termination and the sample xApp, as done for example [in these]() [papers](https://ece.northeastern.edu/wineslab/papers/bonati2021intelligence.pdf)
+- `setup-sample-xapp.sh`: script to setup a sample xApp Docker container. This xApp is capable of connecting to the [SCOPE](https://github.com/wineslab/colosseum-scope) RAN environment through the following [E2 termination](https://github.com/wineslab/colosseum-scope-e2). Custom or standard-compliant service models can be implemented on top of the RAN E2 termination and the sample xApp, as done for example [in these]() [papers](https://ece.northeastern.edu/wineslab/papers/bonati2021intelligence.pdf). Also code-server is running and you could get access to the IDE by going 10.0.2.24:8080 in your browser
 - `start-xapp.sh`: script to configure and start the sample xApp. The ID of the gNB targeted by the xApp needs to be provided in the script, as discussed below
 
 ### setup directory
